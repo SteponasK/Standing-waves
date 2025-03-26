@@ -38,6 +38,9 @@ jobs:
           echo "Checking for index.html:"
           cat out/index.html
           
+      - name: Create .nojekyll file
+        run: touch out/.nojekyll
+          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
