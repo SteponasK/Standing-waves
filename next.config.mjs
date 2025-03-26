@@ -8,7 +8,7 @@ try {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export", // Enables static export
-  basePath: "/Standing-waves", // Updated to match repository name
+  basePath: "/standing-wave-simulation", // Updated to match repository name
   eslint: {
     ignoreDuringBuilds: true,
   },
