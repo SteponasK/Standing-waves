@@ -25,12 +25,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
         
+      - name: Clean build directories
+        run: rm -rf .next out
+        
       - name: Build
         run: npm run build
         
       - name: Check output
-        run: ls -la out
-        
+        run: |
+          echo "Checking out directory contents:"
+          ls -la out
+          echo "Checking for index.html:"
+          cat out/index.html
+          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
