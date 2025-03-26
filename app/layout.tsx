@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Standing wave',
-  description: 'Standing wave',
-  generator: 'Standing wave',
+  title: 'Stovinčiųjų Bangų Simuliacija',
+  description: 'Stovinčiųjų Bangų Simuliacija - Fizika PBL',
+  generator: 'Stovinčiųjų Bangų Simuliacija',
 }
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="lt">
       <body>{children}</body>
     </html>
   )

@@ -138,7 +138,7 @@ export default function StandingWaveSimulation() {
     ctx.fillStyle = "#333"
     ctx.font = "14px Arial"
     ctx.textAlign = "right"
-    ctx.fillText(reflectionType === "fixed" ? "Fixed End" : "Free End", canvas.width - 15, 20)
+    ctx.fillText(reflectionType === "fixed" ? "Fiksuotas Galas" : "Laisvas Galas", canvas.width - 15, 20)
   }
 
   // Animation loop
@@ -186,14 +186,14 @@ export default function StandingWaveSimulation() {
 
   return (
     <div className="container mx-auto py-8">
-      <h1 className="text-3xl font-bold mb-6 text-center">Standing Wave Simulation</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">Stovinčiųjų Bangų Simuliacija</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
           <Card>
             <CardHeader>
-              <CardTitle>Wave Visualization</CardTitle>
-              <CardDescription>Observe how incident and reflected waves combine to form standing waves</CardDescription>
+              <CardTitle>Bangų Vizualizacija</CardTitle>
+              <CardDescription>Vizualizacija, kaip krintančios ir atspindėtos bangos susijungia į stovinčiąsias bangas</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="relative border rounded-lg overflow-hidden bg-white">
@@ -206,11 +206,11 @@ export default function StandingWaveSimulation() {
         <div>
           <Card>
             <CardHeader>
-              <CardTitle>Control Panel</CardTitle>
+              <CardTitle>Nustatymai</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               <div>
-                <h3 className="text-lg font-medium mb-2">Reflection Type</h3>
+                <h3 className="text-lg font-medium mb-2">Atspindžio Tipas</h3>
                 <Tabs
                   defaultValue="fixed"
                   value={reflectionType}
@@ -218,30 +218,30 @@ export default function StandingWaveSimulation() {
                   className="w-full"
                 >
                   <TabsList className="grid grid-cols-2 w-full">
-                    <TabsTrigger value="fixed">Fixed End</TabsTrigger>
-                    <TabsTrigger value="free">Free End</TabsTrigger>
+                    <TabsTrigger value="fixed">Fiksuotas Galas</TabsTrigger>
+                    <TabsTrigger value="free">Laisvas Galas</TabsTrigger>
                   </TabsList>
                 </Tabs>
               </div>
 
               <div>
-                <h3 className="text-lg font-medium mb-2">Wave Visibility</h3>
+                <h3 className="text-lg font-medium mb-2">Bangų Matomumas</h3>
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <label htmlFor="incident-wave" className="text-sm font-medium">
-                      Incident Wave (Red)
+                      Krintanti Banga (Raudona)
                     </label>
                     <Switch id="incident-wave" checked={showIncidentWave} onCheckedChange={setShowIncidentWave} />
                   </div>
                   <div className="flex items-center justify-between">
                     <label htmlFor="reflected-wave" className="text-sm font-medium">
-                      Reflected Wave (Blue)
+                      Atsispindėjusi Banga (Mėlyna)
                     </label>
                     <Switch id="reflected-wave" checked={showReflectedWave} onCheckedChange={setShowReflectedWave} />
                   </div>
                   <div className="flex items-center justify-between">
                     <label htmlFor="standing-wave" className="text-sm font-medium">
-                      Standing Wave (Black)
+                      Stovinčioji Banga (Juoda)
                     </label>
                     <Switch id="standing-wave" checked={showStandingWave} onCheckedChange={setShowStandingWave} />
                   </div>
@@ -249,12 +249,12 @@ export default function StandingWaveSimulation() {
               </div>
 
               <div>
-                <h3 className="text-lg font-medium mb-2">Wave Parameters</h3>
+                <h3 className="text-lg font-medium mb-2">Bangų Parametrai</h3>
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <div className="flex justify-between">
                       <label htmlFor="amplitude" className="text-sm font-medium">
-                        Amplitude: {amplitude}
+                        Amplitudė: {amplitude} m
                       </label>
                     </div>
                     <Slider
@@ -269,7 +269,7 @@ export default function StandingWaveSimulation() {
                   <div className="space-y-2">
                     <div className="flex justify-between">
                       <label htmlFor="frequency" className="text-sm font-medium">
-                        Frequency: {frequency.toFixed(1)}
+                        Dažnis: {frequency.toFixed(1)} Hz
                       </label>
                     </div>
                     <Slider
@@ -284,7 +284,7 @@ export default function StandingWaveSimulation() {
                   <div className="space-y-2">
                     <div className="flex justify-between">
                       <label htmlFor="wavelength" className="text-sm font-medium">
-                        Wavelength: {wavelength}
+                        Bangos Ilgis: {wavelength} m
                       </label>
                     </div>
                     <Slider
@@ -300,7 +300,7 @@ export default function StandingWaveSimulation() {
               </div>
 
               <div>
-                <h3 className="text-lg font-medium mb-2">Animation Controls</h3>
+                <h3 className="text-lg font-medium mb-2">Animacijos nustatymai</h3>
                 <div className="flex flex-wrap gap-2">
                   <Button
                     variant={isPlaying ? "outline" : "default"}
@@ -308,31 +308,31 @@ export default function StandingWaveSimulation() {
                     onClick={() => setIsPlaying(!isPlaying)}
                   >
                     {isPlaying ? <Pause className="h-4 w-4 mr-1" /> : <Play className="h-4 w-4 mr-1" />}
-                    {isPlaying ? "Pause" : "Play"}
+                    {isPlaying ? "Pauzė" : "Pradėti"}
                   </Button>
                   <Button variant="outline" size="sm" onClick={resetSimulation}>
                     <RotateCcw className="h-4 w-4 mr-1" />
-                    Reset
+                    Atstatyti
                   </Button>
                   <Button variant="outline" size="sm" onClick={handleStep} disabled={isPlaying}>
                     <StepForward className="h-4 w-4 mr-1" />
-                    Step
+                    Kitas Žingsnis
                   </Button>
                 </div>
               </div>
 
               <div>
-                <h3 className="text-lg font-medium mb-2">Animation Mode</h3>
+                <h3 className="text-lg font-medium mb-2">Animacijos Režimai</h3>
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <label htmlFor="slow-motion" className="text-sm font-medium">
-                      Slow Motion
+                      Lėtas Judesys
                     </label>
                     <Switch id="slow-motion" checked={slowMotion} onCheckedChange={setSlowMotion} />
                   </div>
                   <div className="flex items-center justify-between">
                     <label htmlFor="step-mode" className="text-sm font-medium">
-                      Step Mode
+                      Žingsnis po Žingsnio
                     </label>
                     <Switch
                       id="step-mode"
@@ -347,7 +347,7 @@ export default function StandingWaveSimulation() {
                     <div className="space-y-2 mt-2">
                       <div className="flex justify-between">
                         <label htmlFor="time-step" className="text-sm font-medium">
-                          Time Step: {timeStep.toFixed(2)}
+                          Laiko Žingsnis: {timeStep.toFixed(2)} s
                         </label>
                       </div>
                       <Slider
@@ -370,36 +370,29 @@ export default function StandingWaveSimulation() {
       <div className="mt-8">
         <Card>
           <CardHeader>
-            <CardTitle>About Standing Waves</CardTitle>
+            <CardTitle>Apie Stovinčiąsias Bangas</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <p>
-                A standing wave is formed when two waves of the same frequency and amplitude travel in opposite
-                directions and interfere with each other. This simulation demonstrates two important cases:
+                Stovinti banga susidaro, kai dvi to paties dažnio ir amplitudės bangos sklinda priešingomis kryptimis ir tarpusavyje interferuoja. Ši simuliacija demonstruoja du svarbius atvejus:
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <h3 className="font-bold">Fixed End Reflection</h3>
+                  <h3 className="font-bold">Fiksuoto Galo Atspindys</h3>
                   <p>
-                    When a wave reflects from a fixed end, it undergoes a phase shift of π (180°). This creates a node
-                    (point of zero amplitude) at the boundary. The incident and reflected waves cancel each other out at
-                    this point.
+                    Kai banga atsispindi nuo fiksuoto galo, ji patiria π (180°) fazės poslinkį. Tai sukuria mazgą (nulinės amplitudės tašką) ties riba. Krintanti ir atspindėta bangos šiame taške viena kitą panaikina.
                   </p>
                 </div>
                 <div>
-                  <h3 className="font-bold">Free End Reflection</h3>
+                  <h3 className="font-bold">Laisvo Galo Atspindys</h3>
                   <p>
-                    When a wave reflects from a free end, there is no phase shift. This creates an antinode (point of
-                    maximum amplitude) at the boundary. The incident and reflected waves reinforce each other at this
-                    point.
+                    Kai banga atsispindi nuo laisvo galo, fazės poslinkio nėra. Tai sukuria antimazgą (maksimalios amplitudės tašką) ties riba. Krintanti ir atspindėta bangos šiame taške viena kitą stiprina.
                   </p>
                 </div>
               </div>
               <p>
-                The resulting standing wave pattern shows nodes (points that never move) and antinodes (points of
-                maximum oscillation) at fixed positions. The distance between adjacent nodes or adjacent antinodes is
-                half a wavelength (λ/2).
+                Gautas stovinčiosios bangos modelis rodo mazgus (taškus, kurie niekada nejuda) ir antimazgus (maksimalios svyravimo taškus) fiksuotose padėtyse. Atstumas tarp gretimų mazgų arba gretimų antimazgų yra pusė bangos ilgio (λ/2).
               </p>
             </div>
           </CardContent>
